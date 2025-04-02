@@ -1,0 +1,11 @@
+#ignore CSV files
+*.csv 
+
+#ignore images
+*.png
+
+#ignore zip fodlers
+*zip
+
+#ignore binary executables
+*.pyc
