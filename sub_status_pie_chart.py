@@ -65,5 +65,5 @@ def master_apps_pie(month, year):
     # Save individual chart
     fig_path = f"./Charts/{month} {year}/master_submission_pie.png"
     fig.savefig(fig_path)
-    plt.close(fig)
+    plt.close(fig)  # closes the figure to prevent memory build-up    
     print(f"Saved {month} {year} master pie chart to Charts/{month} {year}/master_submission_pie.png")
