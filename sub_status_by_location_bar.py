@@ -81,5 +81,6 @@ def apps_by_location_bar(month, year):
     # Save individual chart
     fig_path = f"./Charts/{month} {year}/office_breakdown_bar_graph.png"
     fig.savefig(fig_path)
+    plt.close(fig)  # closes the figure to prevent memory build-up
 
     print(f"Saved {month} {year} office breakdown bar graph to Charts/{month} {year}/office_breakdown_bar_graph.png")

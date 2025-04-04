@@ -12,17 +12,20 @@ def offers_breakdown(month, year):
         if pd.isna(offers_str):
             return []
         
-        # split offers by new line
-        offer_lines =re.split(r'\n|;', offers_str)
+        offer_lines = re.split(r'\n|;', offers_str)
         amounts = []
         for line in offer_lines:
-            match = re.match(r'\$?([\d,.]+)[kK]?', line.strip())
+            match = re.search(r'\$?\s*([\d\,\.]+)\s*[kK]?', line)
             if match:
-                # remove commas, convert to float, scale if needed
-                raw = match.group(1).replace(',', '')
-                value = float(raw)
-                if value < 1000: value *= 1000
-                amounts.append(value)
+                raw = match.group(1).replace(',', '').strip()
+                if raw == "":
+                    continue
+                try:
+                    value = float(raw)
+                    if value < 1000: value *= 1000
+                    amounts.append(value)
+                except ValueError:
+                    continue
         return amounts
 
     # Extract offer amounts and comute average offer per app
@@ -30,7 +33,7 @@ def offers_breakdown(month, year):
     apps['Average Offer'] = apps['Offer Amounts'].apply(lambda x: sum(x)/len(x) if x else 0)
 
     # Filter out apps with no offers
-    apps = apps[apps['Average Offer'] > 0]
+    apps = apps[apps['Offers'].notna() & (apps['Offers'].str.strip() != '')]
 
     #Define ranges for grouping
     bins = [0, 10000, 20000, 30000, 40000, float('inf')]
@@ -67,7 +70,9 @@ def offers_breakdown(month, year):
     )
 
     # Title and better spacing
-    plt.title("Average Offer Amounts", fontsize=14)
+    plt.title(f"{month} {year} Average Offer Amounts", fontsize=14)
+    plt.text(0, 1.2, f"Total Offers: {total}", ha='center', fontsize=9, style='italic')
+
     plt.subplots_adjust(left=0.1, right=0.75)  # Leave room for legend
     # plt.show()
 
@@ -77,5 +82,7 @@ def offers_breakdown(month, year):
     # Save individual chart
     fig_path = f"./Charts/{month} {year}/offers_pie_chart.png"
     fig.savefig(fig_path)
+    plt.close(fig)  # closes the figure to prevent memory build-up
+
 
     print(f"Saved {month} {year} offers pie chart to Charts/{month} {year}/offers_pie_chart.png")

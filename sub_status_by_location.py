@@ -78,5 +78,5 @@ def apps_by_location_pie(month, year):
     # Save individual chart
     fig_path = f"./Charts/{month} {year}/office_breakdown_pie_chart.png"
     fig.savefig(fig_path)
-    plt.close(fig)
+    plt.close(fig)  # closes the figure to prevent memory build-up    
     print(f"Saved {month} {year} office breakdown pie chart to Charts/{month} {year}/office_breakdown_pie_chart.png")
