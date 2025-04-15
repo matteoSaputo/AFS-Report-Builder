@@ -7,9 +7,6 @@ def offers_breakdown_by_location(month, year):
     # Load data
     apps = pd.read_csv(f'./App_Data/Sales-{month} {year} App Data.csv')
 
-    # Filter out apps with no offers
-    apps = apps[apps['Offers'].notna() & (apps['Offers'].str.strip() != '')]
-
     # Define function to extract array of numeric amounts of all offers for an app
     def extract_offer_amounts(offers_str):
         if pd.isna(offers_str):
@@ -109,5 +106,3 @@ def offers_breakdown_by_location(month, year):
     plt.close(fig)  # closes the figure to prevent memory build-up
 
     print(f"Saved {month} {year} offers pie chart by locatiuon to Charts/{month} {year}/offers_pie_chart_by_location.png")
-
-offers_breakdown_by_location("February", "2025")
