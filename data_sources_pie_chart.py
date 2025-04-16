@@ -66,4 +66,4 @@ def data_sources_pie_chart(month, year):
     plt.savefig(fig_path)
     plt.close()
 
-    print(f"✅ Saved {month} {year} data sources pie chart to: {fig_path}")
+    print(f"Saved {month} {year} data sources pie chart to: {fig_path}")

@@ -4,10 +4,12 @@ from sub_status_by_location_bar import apps_by_location_bar
 from offers_breakdown import offers_breakdown
 from offers_breakdown_by_location import offers_breakdown_by_location
 from data_sources_pie_chart import data_sources_pie_chart
+from data_sources_bar_graph import data_sources_bar_chart
 
 def main():
     # List of (month, year) tuples
     date_ranges = [
+        ("Company", "Wide"),
         ("March", "2025"),
         ("February", "2025"),
         ("January", "2025"),
@@ -25,6 +27,7 @@ def main():
         offers_breakdown(month, year)
         offers_breakdown_by_location(month, year)
         data_sources_pie_chart(month, year)
+        data_sources_bar_chart(month, year)
 
 if __name__ == "__main__":
     main()
