@@ -3,6 +3,7 @@ from sub_status_by_location import apps_by_location_pie
 from sub_status_by_location_bar import apps_by_location_bar
 from offers_breakdown import offers_breakdown
 from offers_breakdown_by_location import offers_breakdown_by_location
+from data_sources_pie_chart import data_sources_pie_chart
 
 def main():
     # List of (month, year) tuples
@@ -23,6 +24,7 @@ def main():
         apps_by_location_bar(month, year)
         offers_breakdown(month, year)
         offers_breakdown_by_location(month, year)
+        data_sources_pie_chart(month, year)
 
 if __name__ == "__main__":
     main()
