@@ -60,10 +60,13 @@ def master_apps_pie(month, year):
     plt.tight_layout()
 
     # Create the folder if it doesn't exist
-    os.makedirs(f'./Charts/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Month/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Chart/master_submission_pie', exist_ok=True)
 
-    # Save individual chart
-    fig_path = f"./Charts/{month} {year}/master_submission_pie.png"
-    fig.savefig(fig_path)
+    # Save
+    fig_path = f"./Charts/By Month/{month} {year}/{month} {year} master_submission_pie.png"
+    plt.savefig(fig_path)
+    fig_path = f"./Charts/By Chart/master_submission_pie/{month} {year} master_submission_pie.png"
+    plt.savefig(fig_path)
     plt.close(fig)  # closes the figure to prevent memory build-up    
     print(f"Saved {month} {year} master pie chart to Charts/{month} {year}/master_submission_pie.png")

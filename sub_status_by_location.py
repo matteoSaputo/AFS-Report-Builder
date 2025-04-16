@@ -73,10 +73,13 @@ def apps_by_location_pie(month, year):
     plt.tight_layout()
 
     # Create the folder if it doesn't exist
-    os.makedirs(f'./Charts/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Month/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Chart/office_breakdown_pie_chart', exist_ok=True)
 
-    # Save individual chart
-    fig_path = f"./Charts/{month} {year}/office_breakdown_pie_chart.png"
-    fig.savefig(fig_path)
+    # Save
+    fig_path = f"./Charts/By Month/{month} {year}/{month} {year} office_breakdown_pie_chart.png"
+    plt.savefig(fig_path)
+    fig_path = f"./Charts/By Chart/office_breakdown_pie_chart/{month} {year} office_breakdown_pie_chart.png"
+    plt.savefig(fig_path)
     plt.close(fig)  # closes the figure to prevent memory build-up    
     print(f"Saved {month} {year} office breakdown pie chart to Charts/{month} {year}/office_breakdown_pie_chart.png")

@@ -61,8 +61,13 @@ def data_sources_pie_chart(month, year):
     plt.tight_layout()
 
     # Save
-    os.makedirs(f'./Charts/{month} {year}', exist_ok=True)
-    fig_path = f"./Charts/{month} {year}/data_sources_pie_chart.png"
+    os.makedirs(f'./Charts/By Month/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Chart/data_sources_pie_chart', exist_ok=True)
+
+    # Save
+    fig_path = f"./Charts/By Month/{month} {year}/{month} {year} data_sources_pie_chart.png"
+    plt.savefig(fig_path)
+    fig_path = f"./Charts/By Chart/data_sources_pie_chart/{month} {year} data_sources_pie_chart.png"
     plt.savefig(fig_path)
     plt.close()
 

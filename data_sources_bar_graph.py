@@ -48,12 +48,16 @@ def data_sources_bar_chart(month, year):
     ax.set_xticklabels(filtered_sources.index, rotation=45, ha='right', fontsize=9)
     plt.tight_layout()
 
-    # Create save directory if needed
-    os.makedirs(f'./Charts/{month} {year}', exist_ok=True)
+    # Create save directorys if needed
+    os.makedirs(f'./Charts/By Month/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Chart/data_sources_bar_chart', exist_ok=True)
 
     # Save
-    fig_path = f"./Charts/{month} {year}/data_sources_bar_chart.png"
+    fig_path = f"./Charts/By Month/{month} {year}/{month} {year} data_sources_bar_chart.png"
     plt.savefig(fig_path)
+    fig_path = f"./Charts/By Chart/data_sources_bar_chart/{month} {year} data_sources_bar_chart.png"
+    plt.savefig(fig_path)
+
     plt.close()
 
     print(f"Saved {month} {year} data sources bar chart to: {fig_path}")
