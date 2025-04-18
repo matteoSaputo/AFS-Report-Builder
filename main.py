@@ -17,7 +17,16 @@ def main():
         ("November", "2024"),
         ("October", "2024"),
         ("September", "2024"),
-        ("August", "2024")
+        ("August", "2024"),
+        ("Funded-Company", "Wide"),
+        ("Funded-March", "2025"),
+        ("Funded-February", "2025"),
+        ("Funded-January", "2025"),
+        ("Funded-December", "2024"),
+        ("Funded-November", "2024"),
+        ("Funded-October", "2024"),
+        ("Funded-September", "2024"),
+        ("Funded-August", "2024")
     ]
 
     for month, year in date_ranges:
