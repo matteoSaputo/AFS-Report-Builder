@@ -76,11 +76,14 @@ def apps_by_location_bar(month, year):
     # plt.show()
 
     # Create the folder if it doesn't exist
-    os.makedirs(f'./Charts/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Month/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Chart/office_breakdown_bar_graph', exist_ok=True)
 
-    # Save individual chart
-    fig_path = f"./Charts/{month} {year}/office_breakdown_bar_graph.png"
-    fig.savefig(fig_path)
+    # Save
+    fig_path = f"./Charts/By Month/{month} {year}/{month} {year} office_breakdown_bar_graph.png"
+    plt.savefig(fig_path)
+    fig_path = f"./Charts/By Chart/office_breakdown_bar_graph/{month} {year} office_breakdown_bar_graph.png"
+    plt.savefig(fig_path)
     plt.close(fig)  # closes the figure to prevent memory build-up
 
     print(f"Saved {month} {year} office breakdown bar graph to Charts/{month} {year}/office_breakdown_bar_graph.png")

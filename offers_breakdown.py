@@ -77,11 +77,14 @@ def offers_breakdown(month, year):
     # plt.show()
 
     # Create the folder if it doesn't exist
-    os.makedirs(f'./Charts/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Month/{month} {year}', exist_ok=True)
+    os.makedirs(f'./Charts/By Chart/offers_pie_chart', exist_ok=True)
 
-    # Save individual chart
-    fig_path = f"./Charts/{month} {year}/offers_pie_chart.png"
-    fig.savefig(fig_path)
+    # Save
+    fig_path = f"./Charts/By Month/{month} {year}/{month} {year} offers_pie_chart.png"
+    plt.savefig(fig_path)
+    fig_path = f"./Charts/By Chart/offers_pie_chart/{month} {year} offers_pie_chart.png"
+    plt.savefig(fig_path)
     plt.close(fig)  # closes the figure to prevent memory build-up
 
 
