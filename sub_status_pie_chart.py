@@ -5,7 +5,7 @@ import os
 def master_apps_pie(month, year):
     # Load CSV
     df = pd.read_csv(f'./App_Data/Sales-{month} {year} App Data.csv')
-
+    
     # Normalize the Submission Status values (strip spaces and make consistent casing)
     df['Submission Status'] = df['Submission Status'].str.strip().str.title()
 

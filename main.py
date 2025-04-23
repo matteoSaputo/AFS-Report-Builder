@@ -5,11 +5,12 @@ from offers_breakdown import offers_breakdown
 from offers_breakdown_by_location import offers_breakdown_by_location
 from data_sources_pie_chart import data_sources_pie_chart
 from data_sources_bar_graph import data_sources_bar_chart
+from dk_pie_charts import dk_submission_pie_charts
 
 def main():
     # List of (month, year) tuples
     date_ranges = [
-        ("Company", "Wide"),
+        ("All", "Time"),
         ("March", "2025"),
         ("February", "2025"),
         ("January", "2025"),
@@ -18,7 +19,7 @@ def main():
         ("October", "2024"),
         ("September", "2024"),
         ("August", "2024"),
-        ("Funded-Company", "Wide"),
+        ("Funded-All", "Time"),
         ("Funded-March", "2025"),
         ("Funded-February", "2025"),
         ("Funded-January", "2025"),
@@ -30,8 +31,10 @@ def main():
     ]
 
     for month, year in date_ranges:
-        master_apps_pie(month, year)
-        apps_by_location_pie(month, year)
+        dk_submission_pie_charts(month, year)
+        if "Funded" not in month:
+            master_apps_pie(month, year)
+            apps_by_location_pie(month, year)
         apps_by_location_bar(month, year)
         offers_breakdown(month, year)
         offers_breakdown_by_location(month, year)
